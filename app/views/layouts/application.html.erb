@@ -12,9 +12,16 @@
     <div class="twelve column" id="menu">
       <% if signed_in? %>
         <h3>Hola <%= current_user.name %>!</h3>
+        <%= link_to 'Edit profile', edit_user_path(current_user.id) %>
         <%= link_to 'Sign out', sign_out_path, method: :delete %>
       <% else %>
-        <%= link_to 'Sign in', new_session_path %>
+        <div id="sign_in">
+          <%= link_to 'Sign in', new_session_path %>
+        </div>
+        <div id="sign_up">
+          Don't have an account yet?
+          <%= link_to 'Sign up', new_user_path %>
+        </div>
       <% end %>
     </div>
   </div>

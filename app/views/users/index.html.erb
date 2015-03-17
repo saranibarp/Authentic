@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="twelve column">
+    <h2>User List</h2>
+      <table id="Users">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Admin</th>
+          <th>Last Signed In At</th>
+          <th></th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.is_admin? ? 'Yes' : 'No' %></td>
+            <td><%= user.last_signed_in_at.to_formatted_s(:long) %></td>
+            <td><%= link_to 'Delete', user_path(user), method: :delete %></td>
+          <tr> 
+        <% end %>
+      </table>
+  </div>
+</div>
