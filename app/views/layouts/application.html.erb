@@ -7,8 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+  <div class="row">
+    <div class="twelve column" id="menu">
+      <% if signed_in? %>
+        <h3>Hola <%= current_user.name %>!</h3>
+        <%= link_to 'Sign out', sign_out_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign in', new_session_path %>
+      <% end %>
+    </div>
+  </div>
+  <div class="twelve column" id="messages">
+    <h3><%= flash[:notice] %></h3>
+  </div>
 
-<%= yield %>
-
+  <%= yield %>
+</div>
 </body>
 </html>

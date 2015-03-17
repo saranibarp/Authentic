@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create]
+  
   root 'pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
