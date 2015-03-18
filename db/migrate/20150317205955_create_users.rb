@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, null: false
       t.string :password_digest, null:false
       t.boolean :admin, default: false
-      t.datetime :last_signed_in_at
+      t.datetime :last_signed_in_at, default: DateTime.now
       t.timestamps null: false
     end
   end

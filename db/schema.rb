@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20150317205955) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",              default: ""
-    t.string   "email",                             null: false
-    t.string   "password_digest",                   null: false
+    t.string   "email",                                             null: false
+    t.string   "password_digest",                                   null: false
     t.boolean  "admin",             default: false
-    t.datetime "last_signed_in_at"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "last_signed_in_at", default: '2015-03-18 00:54:51'
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
 end

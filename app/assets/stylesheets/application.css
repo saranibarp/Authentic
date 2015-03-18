@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+#links
+{
+  text-align: right;
+}
+
+.my_image
+{
+  display: block;
+  margin: 30px auto;
+}
+
+#messages
+{
+  color: #33C3F0;
+  text-align: center;
+}

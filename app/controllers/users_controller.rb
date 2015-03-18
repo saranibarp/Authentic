@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :lookup_user, only: [:edit, :update, :destroy]
+  before_action :is_signed_in?, only: [:index, :edit, :update, :destroy]
   
   def index
     if current_user.is_admin?
@@ -14,13 +15,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    redirect_to root_path, notice: "Access denied!" unless current_user.id == @user.id
   end
 
   def create
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to sessions_path, notice: "Thank you! You're one of us now"
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "Thank you! You're one of us now"
     else
       render :new
     end
@@ -51,5 +54,9 @@ class UsersController < ApplicationController
 
   def lookup_user
     @user = User.find(params[:id])
+  end
+
+  def is_signed_in?
+    redirect_to root_path unless signed_in?
   end
 end

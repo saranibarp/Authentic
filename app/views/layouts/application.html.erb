@@ -8,25 +8,28 @@
 </head>
 <body>
 <div class="container">
-  <div class="row">
-    <div class="twelve column" id="menu">
+  <div class="row" id="menu">
       <% if signed_in? %>
-        <h3>Hola <%= current_user.name %>!</h3>
-        <%= link_to 'Edit profile', edit_user_path(current_user.id) %>
-        <%= link_to 'Sign out', sign_out_path, method: :delete %>
-      <% else %>
-        <div id="sign_in">
-          <%= link_to 'Sign in', new_session_path %>
+        <div class="eight columns">
+          <h5>Hola <%= current_user.name %>!</h5>
         </div>
-        <div id="sign_up">
-          Don't have an account yet?
+        <div class="four columns" id="links">  
+          <%= link_to_if(current_user.is_admin?, 'User List', users_path){} %>&nbsp;
+          <%= link_to 'Edit profile', edit_user_path(current_user.id) %>&nbsp;
+          <%= link_to 'Sign out', sign_out_path, method: :delete %>
+        </div>
+      <% else %>
+        <div class="eight columns">
+          &nbsp;
+        </div>
+        <div class="four columns" id="links">
+          <%= link_to 'Sign in', new_session_path %>&nbsp;
           <%= link_to 'Sign up', new_user_path %>
         </div>
       <% end %>
-    </div>
   </div>
-  <div class="twelve column" id="messages">
-    <h3><%= flash[:notice] %></h3>
+  <div id="messages">
+    <h5><%= flash[:notice] %></h5>
   </div>
 
   <%= yield %>
